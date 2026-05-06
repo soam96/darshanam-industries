@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
 
 :root {
   --primary-green: #0a2e1f;
@@ -24,27 +24,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-
-.brand-font {
   font-family: 'Cinzel', serif;
-}
-
-.section-light {
-  background-color: var(--text-light);
-  color: var(--bg-darker);
-}
-
-.section-light h2 {
-  color: var(--primary-green);
-}
-
-.section-light .gold-line {
-  background: var(--primary-green);
 }
 
 /* Custom scrollbar */

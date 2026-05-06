@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
-import { ChevronDown, Sparkles, Leaf, Factory, Droplets, X, MessageCircle, MapPin, Phone, ShieldCheck, Cpu, Zap, CheckCircle } from 'lucide-react';
+import { ChevronDown, Sparkles, Leaf, Factory, Droplets, X, MessageCircle, MapPin, Phone } from 'lucide-react';
 import './App.css';
 
 const products = [
@@ -235,26 +235,25 @@ function App() {
                 <h2>Company Profile</h2>
                 <div className="gold-line-center"></div>
                 
-                <div className="info-grid">
+                <div className="info-grid modal-info-grid">
                   <div className="info-box">
                     <h3>Basic Information</h3>
                     <ul>
-                      <li><strong>Nature of Business</strong><span>Manufacturer</span></li>
-                      <li><strong>Additional Business</strong><span>Recipient of Goods or Services</span></li>
-                      <li><strong>Company CEO</strong><span>Rahul Khajekar</span></li>
-                      <li><strong>Total Employees</strong><span>11 to 25 People</span></li>
-                      <li><strong>Legal Status</strong><span>Partnership Firm</span></li>
-                      <li><strong>Annual Turnover</strong><span>40 L - 1.5 Cr</span></li>
+                      <li><span>Nature of Business:</span> Manufacturer</li>
+                      <li><span>Additional Business:</span> Recipient of Goods or Services</li>
+                      <li><span>Company CEO:</span> RAHUL KHAJEKAR</li>
+                      <li><span>Employees:</span> 11 to 25 People</li>
+                      <li><span>Legal Status:</span> Partnership</li>
+                      <li><span>Annual Turnover:</span> 40 L - 1.5 Cr</li>
                     </ul>
                   </div>
                   <div className="info-box">
                     <h3>Statutory Profile</h3>
                     <ul>
-                      <li><strong>Primary Banker</strong><span>ICICI Bank</span></li>
-                      <li><strong>GST Number</strong><span>27**********1Z5</span></li>
-                      <li><strong>Registration Date</strong><span>October 2021</span></li>
-                      <li><strong>UDYAM Number</strong><span>UDYAM-MH-26-****998</span></li>
-                      <li><strong>Establishment Year</strong><span>2021</span></li>
+                      <li><span>Banker:</span> ICICI</li>
+                      <li><span>GST No:</span> 27**********1Z5</li>
+                      <li><span>GST Reg Date:</span> Oct'21</li>
+                      <li><span>UDYAM No:</span> UDYAM-MH-26-****998</li>
                     </ul>
                   </div>
                 </div>
@@ -273,11 +272,11 @@ function App() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              {selectedCategory}
+              {selectedCategory} Collection
             </motion.h1>
-            <div className="gold-line"></div>
+            <div className="gold-line-center"></div>
             <button className="back-btn" onClick={() => { setActivePage('home'); window.scrollTo(0,0); }}>
-              <ChevronDown size={20} style={{ transform: 'rotate(90deg)' }} /> Back to Overview
+              <ChevronDown style={{ transform: 'rotate(90deg)' }} /> Back to Home
             </button>
           </div>
           
@@ -286,7 +285,7 @@ function App() {
               <motion.div 
                 key={idx}
                 className="detail-product-card"
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: idx * 0.1 }}
               >
@@ -436,7 +435,7 @@ function App() {
         </div>
       </section>
 
-      {/* Professional Product Showcase */}
+      {/* Cinematic Product Showcase */}
       <section id="products" className="showcase-section">
         <div className="section-header">
           <h2>Our Signature Collection</h2>
@@ -444,25 +443,27 @@ function App() {
         </div>
 
         <div className="products-container">
-          {products.map((product) => (
+          {products.map((product, index) => (
             <motion.div 
               key={product.id}
-              className="product-card"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6 }}
+              className={`product-row ${product.align}`}
+              initial={{ opacity: 0, rotateX: 10, y: 150, scale: 0.95 }}
+              whileInView={{ opacity: 1, rotateX: 0, y: 0, scale: 1 }}
+              viewport={{ once: true, margin: "-150px", amount: 0.2 }}
+              transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
             >
               <div className="product-image-container">
                 <img src={product.image} alt={product.title} className="product-hq-image" />
+                <div className="image-glow"></div>
               </div>
               <div className="product-info">
+                <div className="product-number">0{index + 1}</div>
                 <h3>{product.title}</h3>
                 <p>{product.description}</p>
                 <div className="product-specs">
                   {product.specs.map((spec, i) => (
                     <div key={i} className="spec-item">
-                      <CheckCircle size={16} className="spec-icon" />
+                      <Sparkles size={14} className="spec-icon" />
                       <span>{spec}</span>
                     </div>
                   ))}
@@ -479,7 +480,7 @@ function App() {
                     window.scrollTo(0, 0);
                   }}
                 >
-                  View Complete Range
+                  View Complete Range <ChevronDown size={16} />
                 </button>
               </div>
             </motion.div>
@@ -487,27 +488,27 @@ function App() {
         </div>
       </section>
 
-      {/* Professional Features Section */}
+      {/* Features Section */}
       <section className="features-section">
         <div className="feature">
           <Leaf className="feature-icon" />
           <h4>Eco-Friendly</h4>
-          <p>Sustainably sourced virgin pulp and 100% biodegradable packaging solutions.</p>
+          <p>Sustainably sourced virgin pulp and biodegradable packaging.</p>
         </div>
         <div className="feature">
-          <ShieldCheck className="feature-icon" />
-          <h4>Quality Certified</h4>
-          <p>Strict ISO standards followed across all manufacturing processes.</p>
+          <Sparkles className="feature-icon" />
+          <h4>Ultra Premium</h4>
+          <p>Unmatched softness, strength, and aesthetic appeal.</p>
         </div>
         <div className="feature">
-          <Cpu className="feature-icon" />
-          <h4>Advanced Tech</h4>
-          <p>Manufactured using high-speed automated precision machinery.</p>
+          <Factory className="feature-icon" />
+          <h4>State-of-the-Art</h4>
+          <p>Manufactured using advanced precision machinery.</p>
         </div>
         <div className="feature">
-          <Zap className="feature-icon" />
-          <h4>High Efficiency</h4>
-          <p>Optimized production cycles ensuring maximum absorption and strength.</p>
+          <Droplets className="feature-icon" />
+          <h4>High Absorbency</h4>
+          <p>Engineered for maximum moisture retention and strength.</p>
         </div>
       </section>
       </>
