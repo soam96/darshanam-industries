@@ -235,25 +235,26 @@ function App() {
                 <h2>Company Profile</h2>
                 <div className="gold-line-center"></div>
                 
-                <div className="info-grid modal-info-grid">
+                <div className="info-grid">
                   <div className="info-box">
                     <h3>Basic Information</h3>
                     <ul>
-                      <li><span>Nature of Business:</span> Manufacturer</li>
-                      <li><span>Additional Business:</span> Recipient of Goods or Services</li>
-                      <li><span>Company CEO:</span> RAHUL KHAJEKAR</li>
-                      <li><span>Employees:</span> 11 to 25 People</li>
-                      <li><span>Legal Status:</span> Partnership</li>
-                      <li><span>Annual Turnover:</span> 40 L - 1.5 Cr</li>
+                      <li><strong>Nature of Business</strong><span>Manufacturer</span></li>
+                      <li><strong>Additional Business</strong><span>Recipient of Goods or Services</span></li>
+                      <li><strong>Company CEO</strong><span>Rahul Khajekar</span></li>
+                      <li><strong>Total Employees</strong><span>11 to 25 People</span></li>
+                      <li><strong>Legal Status</strong><span>Partnership Firm</span></li>
+                      <li><strong>Annual Turnover</strong><span>40 L - 1.5 Cr</span></li>
                     </ul>
                   </div>
                   <div className="info-box">
                     <h3>Statutory Profile</h3>
                     <ul>
-                      <li><span>Banker:</span> ICICI</li>
-                      <li><span>GST No:</span> 27**********1Z5</li>
-                      <li><span>GST Reg Date:</span> Oct'21</li>
-                      <li><span>UDYAM No:</span> UDYAM-MH-26-****998</li>
+                      <li><strong>Primary Banker</strong><span>ICICI Bank</span></li>
+                      <li><strong>GST Number</strong><span>27**********1Z5</span></li>
+                      <li><strong>Registration Date</strong><span>October 2021</span></li>
+                      <li><strong>UDYAM Number</strong><span>UDYAM-MH-26-****998</span></li>
+                      <li><strong>Establishment Year</strong><span>2021</span></li>
                     </ul>
                   </div>
                 </div>
@@ -272,11 +273,11 @@ function App() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              {selectedCategory} Collection
+              {selectedCategory}
             </motion.h1>
-            <div className="gold-line-center"></div>
+            <div className="gold-line"></div>
             <button className="back-btn" onClick={() => { setActivePage('home'); window.scrollTo(0,0); }}>
-              <ChevronDown style={{ transform: 'rotate(90deg)' }} /> Back to Home
+              <ChevronDown size={20} style={{ transform: 'rotate(90deg)' }} /> Back to Overview
             </button>
           </div>
           
@@ -285,7 +286,7 @@ function App() {
               <motion.div 
                 key={idx}
                 className="detail-product-card"
-                initial={{ opacity: 0, y: 50 }}
+                initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: idx * 0.1 }}
               >
