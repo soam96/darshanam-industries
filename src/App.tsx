@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, Sparkles, Leaf, Factory, Droplets, X, MessageCircle, MapPin, Phone } from 'lucide-react';
 import './App.css';
 
@@ -105,8 +105,7 @@ function App() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [showProfileModal, setShowProfileModal] = useState(false);
   const [activeCert, setActiveCert] = useState(0);
-  const { scrollYProgress } = useScroll();
-  const yBg = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+
 
   useEffect(() => {
     // Hide splash screen after 3.5 seconds
