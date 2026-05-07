@@ -905,11 +905,33 @@
 
   /* Certifications */
   .certifications-section {
-    padding: 6rem 2rem;
+    padding: 6rem 1.5rem;
   }
   .cert-container {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+  .cert-image-wrapper {
+    order: 1; /* Image on top */
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(212, 175, 55, 0.1);
+  }
+  .cert-img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  }
+  .cert-list {
+    order: 2; /* List below */
+    gap: 1rem;
+  }
+  .cert-item {
+    padding: 1rem;
+    font-size: 0.9rem;
+    text-align: center;
   }
   .cert-header h2 {
     font-size: 2rem;
