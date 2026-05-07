@@ -105,6 +105,7 @@ function App() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [showProfileModal, setShowProfileModal] = useState(false);
   const [activeCert, setActiveCert] = useState(0);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
 
   useEffect(() => {
@@ -198,16 +199,19 @@ function App() {
             DARSHANAM <br/> <small style={{ color: 'var(--accent-gold)', letterSpacing: '4px' }}>INDUSTRIES</small>
           </span>
         </div>
-        <div className="nav-links">
-          <a href="#home" onClick={(e) => { e.preventDefault(); setActivePage('home'); window.scrollTo(0,0); }}>Home</a>
-          {activePage === 'home' && <button className="nav-profile-btn" onClick={() => setShowProfileModal(true)}>Company Profile</button>}
-          <a href="https://maps.app.goo.gl/cYBkNMkwkhX7GUne8" target="_blank" rel="noopener noreferrer" className="nav-map-link">
+        <div className={`nav-links ${isMobileMenuOpen ? 'mobile-active' : ''}`}>
+          <a href="#home" onClick={(e) => { e.preventDefault(); setActivePage('home'); setIsMobileMenuOpen(false); window.scrollTo(0,0); }}>Home</a>
+          {activePage === 'home' && <button className="nav-profile-btn" onClick={() => { setShowProfileModal(true); setIsMobileMenuOpen(false); }}>Company Profile</button>}
+          <a href="https://maps.app.goo.gl/cYBkNMkwkhX7GUne8" target="_blank" rel="noopener noreferrer" className="nav-map-link" onClick={() => setIsMobileMenuOpen(false)}>
             <MapPin size={18} /> Location
           </a>
-          {activePage === 'home' && <a href="#products">Products</a>}
-          {activePage === 'home' && <a href="#certifications">Certifications</a>}
-          <a href="#contact" className="contact-btn">Contact Us</a>
+          {activePage === 'home' && <a href="#products" onClick={() => setIsMobileMenuOpen(false)}>Products</a>}
+          {activePage === 'home' && <a href="#certifications" onClick={() => setIsMobileMenuOpen(false)}>Certifications</a>}
+          <a href="#contact" className="contact-btn" onClick={() => setIsMobileMenuOpen(false)}>Contact Us</a>
         </div>
+        <button className="mobile-menu-toggle" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+          {isMobileMenuOpen ? <X size={28} /> : <div className="hamburger"><span></span><span></span><span></span></div>}
+        </button>
       </nav>
 
       {/* Company Profile Modal */}
